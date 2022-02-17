@@ -12,6 +12,7 @@ namespace Module3HW1.Services
         public int[] Addrange(int[] array, int[] userNumbers)
         {
             int[] arrayA = array;
+            var counterLength = 0;
 
             for (int counter = 0; counter < userNumbers.Length; counter++)
             {
@@ -19,24 +20,15 @@ namespace Module3HW1.Services
                 if (arrayA.Length - 1 != 0)
                 {
                     arrayA = increaseSize.Increase(arrayA);
-                    arrayA[arrayA.Length / 2] = number;
-                    return arrayA;
+                    arrayA[arrayA.Length / 2 + counterLength] = number;
+                    counterLength++;
                 }
-            }
-
-
-            else
-            {
-                for (int i = 0; i < arrayA.Length; i++)
+                else
                 {
-                    if (arrayA[i] == 0)
-                    {
-                        arrayA[i] = number;
-                        return arrayA;
-                    }
+                    arrayA[arrayA.Length + counterLength] = number;
                 }
             }
-            return null;
+            return arrayA;
         }
     }
 }
